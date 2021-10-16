@@ -1,0 +1,266 @@
+local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
+--pls dont skid made by Bowser#9951 Zumqz
+
+local UI = Material.Load({
+     Title = "Jojo tycoon script",
+     Style = 5,
+     SizeX = 300,
+     SizeY = 400,
+     Theme = "Dark"
+})
+local Page = UI.New({
+    Title = "Main"
+})
+local Page2 = UI.New({
+    Title = "Misc"
+})
+
+local Page3 = UI.New({
+    Title = "Teleports"
+})
+local Page4 = UI.New({
+    Title = "Settings"
+})
+
+Page.Button({
+    Text = "Fireclickdetector/free Tools",
+    Callback = function()
+        for _,v in pairs(game.Workspace:GetDescendants()) do
+            if v:IsA("ClickDetector") then
+                fireclickdetector(v)
+                print("Bowser is cool Tools")
+           end
+      end 
+    end
+})
+Page.Button({
+    Text = "GodMode",
+    Callback = function()
+        local humanoid = game.Players.LocalPlayer.Character.Humanoid
+
+        humanoid.HealthChanged:Connect(function(health)
+            humanoid.Health = 100
+        end) 
+    end
+})
+
+Page2.Button({
+    Text = "Rejoin",
+    Callback = function()
+        game.StarterGui:SetCore("SendNotification",  {
+            Title = "Notification";
+            Text = "rejoin script is on";
+            Icon = "";
+            Duration = 5;
+        })
+        game:GetService("TeleportService"):Teleport(game.PlaceId)
+    end
+})
+
+
+Page3.Button({
+    Text = "Pucci shop/heaven shop",
+    Callback = function()
+        game:GetService('Players').LocalPlayer.Character:FindFirstChild('HumanoidRootPart').CFrame = CFrame.new(199.073517, -85.0431824, -78.3546295, 0.923881531, 0, 0.382678568, 0, 1, 0, -0.382678568, 0, 0.923881531); 
+    end
+})
+
+Page2.Button({
+    Text = "Respawn",
+    Callback = function()
+       game.Players.LocalPlayer.Character.Humanoid:Destroy()
+    end
+})
+
+Page3.Button({
+    Text = "CorpsePart(Heart)",
+    Callback = function()
+        game:GetService('Players').LocalPlayer.Character:FindFirstChild('HumanoidRootPart').CFrame = CFrame.new(-120.466682, -84.8098907, 201.596832, 0.361428916, -0.741270542, 0.565585673, 0.931821585, 0.308520615, -0.191111594, -0.0328294635, 0.596098185, 0.802240133);
+    end
+})
+
+Page3.Button({
+    Text = "CorpsePart(Arm)",
+    Callback = function()
+        game:GetService('Players').LocalPlayer.Character:FindFirstChild('HumanoidRootPart').CFrame = CFrame.new(-85.4270859, -84.6966019, -207.034409, -0.267966866, 0.452268988, -0.85067445, 0.96078074, 0.190863252, -0.201176316, 0.0713768601, -0.871219993, -0.485676527);
+    end
+})
+
+Page3.Button({
+    Text = "CorpsePart(Pelvis)",
+    Callback = function()
+        game:GetService('Players').LocalPlayer.Character:FindFirstChild('HumanoidRootPart').CFrame = CFrame.new(242.581833, -84.7703094, 72.294136, -0.252281696, 0.0266195666, -0.9672876, -0.000332574331, 0.999619126, 0.027596062, 0.967653751, 0.00728367642, -0.252176762);
+    end
+})
+
+Page3.Button({
+    Text = "Funny valitime shop/Au shop",
+    Callback = function()
+        game:GetService('Players').LocalPlayer.Character:FindFirstChild('HumanoidRootPart').CFrame = CFrame.new(2225.60034, -73.0033798, -418.67453, 1, 0, 0, 0, 1, 0, 0, 0, 1);
+    end
+})
+
+Page.Button({
+    Text = "Click tp",
+    Callback = function()
+        mouse = game.Players.LocalPlayer:GetMouse()
+        tool = Instance.new("Tool")
+        tool.RequiresHandle = false
+        tool.Name = "Click Teleport"
+        tool.Activated:connect(function()
+        local pos = mouse.Hit+Vector3.new(0,2.5,0)
+        pos = CFrame.new(pos.X,pos.Y,pos.Z)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+        end)
+        tool.Parent = game.Players.LocalPlayer.Backpack
+    end
+})
+Page2.Slider({
+    Text = "WalkSpeed",
+    Callback = function(value)
+        _G.HackedWalkSpeed = value
+
+	local Plrs = game:GetService("Players")
+
+	local MyPlr = Plrs.LocalPlayer
+	local MyChar = MyPlr.Character
+
+	if MyChar then
+		local Hum = MyChar.Humanoid
+		Hum.Changed:connect(function()
+			Hum.WalkSpeed = _G.HackedWalkSpeed
+		end)
+		Hum.WalkSpeed = _G.HackedWalkSpeed
+	end
+
+
+	MyPlr.CharacterAdded:connect(function(Char)
+		MyChar = Char
+		repeat wait() until Char:FindFirstChild("Humanoid")
+		local Hum = Char.Humanoid
+		Hum.Changed:connect(function()
+			Hum.WalkSpeed = _G.HackedWalkSpeed
+		end)
+		Hum.WalkSpeed = _G.HackedWalkSpeed
+	end)
+    end,
+    Min = 0,
+    Max = 100,
+    Def = 0
+})
+
+Page3.Button({
+    Text = "shawdio Dio",
+    Callback = function()
+        game:GetService('Players').LocalPlayer.Character:FindFirstChild('HumanoidRootPart').CFrame = CFrame.new(-1731.28381, -230.993057, 3.1140964, -0.966084361, 0.000608356495, 0.258227199, -7.62680088e-07, 0.999997258, -0.00235875859, -0.258227885, -0.00227895775, -0.966081738);
+    end
+})
+Page2.Button({
+    Text = "Fly",
+    Callback = function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/7rXZ9VNc", true))()
+        game.StarterGui:SetCore("SendNotification",  {
+            Title = "Notification";
+            Text = "Fly script is on Press e to turn on and e to turn off!";
+            Icon = "";
+            Duration = 5;
+        })
+    end,
+    Menu = {
+        Information = function(self)
+            UI.Banner({
+                Text = "Fly Scriptt"            
+            })
+        end,
+        Test = function(self) 
+            table.foreach(self, print)
+        end
+    }
+})
+
+Page2.Button({
+    Text = "Noclip",
+    Callback = function()
+        noclip = false
+	game:GetService('RunService').Stepped:connect(function()
+		if noclip then
+			game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+		end
+	end)
+	plr = game.Players.LocalPlayer
+	mouse = plr:GetMouse()
+	mouse.KeyDown:connect(function(key)
+
+		if key == "n" then
+			noclip = not noclip
+			game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+		end
+	end)
+	game.StarterGui:SetCore("SendNotification",  {
+		Title = "Notification";
+		Text = "Noclip script is on Press N to turn on and turn off!";
+		Icon = "";
+		Duration = 7;
+	})
+    end,
+    Menu = {
+        Information = function(self)
+            UI.Banner({
+                Text = "Walk thru walls noclip"            
+            })
+        end,
+        Test = function(self) 
+            table.foreach(self, print)
+        end
+    }
+})
+
+Page4.ColorPicker({
+    Text = "Choose A Color",
+    Default = Color3.fromRGB(0, 255, 0),
+    Callback = function(value)
+        GetColor()
+    end
+})
+
+Page4.Button({
+    Text = "Give me suggestes press to copy",
+    Callback = function()
+        local discord = "Bowser#9951"
+        setclipboard(discord)
+        game.StarterGui:SetCore("SendNotification",  {
+            Title = "Notification";
+            Text = "My user has been copy to your clipboard";
+            Icon = "";
+            Duration = 5;
+        })
+    end,
+    Menu = {
+        Information = function(self)
+            UI.Banner({
+                Text = "Bowser#9951"            
+            })
+        end,
+        Test = function(self) 
+            table.foreach(self, print)
+        end
+    }
+})
+
+Page3.Button({
+    Text = "SafeSpot",
+    Callback = function()
+        game:GetService('Players').LocalPlayer.Character:FindFirstChild('HumanoidRootPart').CFrame = CFrame.new(-2526.91211, -34.6517906, 2270.70752, 0.16920656, -0.0439973474, -0.984598219, 0.239430606, 0.970910907, -0.00223870575, 0.956055701, -0.235364094, 0.174818814);
+    end,
+    Menu = {
+        Information = function(self)
+            UI.Banner({
+                Text = "big cock"            
+            })
+        end,
+        Test = function(self) 
+            table.foreach(self, print)
+        end
+    }
+})
+
