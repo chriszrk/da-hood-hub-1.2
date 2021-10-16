@@ -69,6 +69,7 @@ Page2.Button({
     Text = "Respawn",
     Callback = function()
        game.Players.LocalPlayer.Character.Humanoid:Destroy()
+       print("Bowser Reset")
     end
 })
 
