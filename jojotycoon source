@@ -68,8 +68,8 @@ Page3.Button({
 Page2.Button({
     Text = "Respawn",
     Callback = function()
-       game.Players.LocalPlayer.Character.Humanoid:Destroy()
-       print("Bowser Reset")
+        local plr = game.Players.LocalPlayer
+        plr.Character.Humanoid:destroy()
     end
 })
 
@@ -147,7 +147,20 @@ Page2.Slider({
     end,
     Min = 0,
     Max = 100,
-    Def = 0
+    Def = 16
+})
+Page2.Slider({
+    Text = "JumpPower",
+    Callback = function(value)
+        _G.JumpPower = value
+local plr = game.Players.LocalPlayer
+
+plr.Character.Humanoid.JumpPower = _G.JumpPower --Change to JumpPower number
+
+    end,
+    Min = 0,
+    Max = 300,
+    Def = 50
 })
 
 Page3.Button({
@@ -179,41 +192,21 @@ Page2.Button({
     }
 })
 
-Page2.Button({
+Page2.Toggle({
     Text = "Noclip",
-    Callback = function()
-        noclip = false
+    Callback = function(value)
+        _G.noclip = value
 	game:GetService('RunService').Stepped:connect(function()
-		if noclip then
+		if _G.noclip then
 			game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
 		end
 	end)
 	plr = game.Players.LocalPlayer
 	mouse = plr:GetMouse()
 	mouse.KeyDown:connect(function(key)
-
-		if key == "n" then
-			noclip = not noclip
-			game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
-		end
 	end)
-	game.StarterGui:SetCore("SendNotification",  {
-		Title = "Notification";
-		Text = "Noclip script is on Press N to turn on and turn off!";
-		Icon = "";
-		Duration = 7;
-	})
     end,
-    Menu = {
-        Information = function(self)
-            UI.Banner({
-                Text = "Walk thru walls noclip"            
-            })
-        end,
-        Test = function(self) 
-            table.foreach(self, print)
-        end
-    }
+    Enabled = false
 })
 
 Page4.ColorPicker({
@@ -264,4 +257,3 @@ Page3.Button({
         end
     }
 })
-
