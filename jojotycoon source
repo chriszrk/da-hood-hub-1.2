@@ -208,6 +208,27 @@ Page2.Toggle({
     end,
     Enabled = false
 })
+Page2.Button({
+    Text = "Spam Ez",
+    Callback = function()
+        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("ez","All")
+        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("ez","All")
+        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("ez","All")
+        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("ez","All")
+        wait(2)
+            repeat until wait(2)
+    end,
+    Menu = {
+        Information = function(self)
+            UI.Banner({
+                Text = "Spam ez msg to people"            
+            })
+        end,
+        Test = function(self) 
+            table.foreach(self, print)
+        end
+    }
+})
 
 Page4.ColorPicker({
     Text = "Choose A Color",
